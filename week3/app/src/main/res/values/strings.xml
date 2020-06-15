@@ -14,4 +14,5 @@
     <string name="about">About</string>
     <string name="app_info">Application Info</string>
     <string name="version_code">Version code: %1$d</string>
+    <string name="call_phone_premission">android.permission.CALL_PHONE</string>
 </resources>
