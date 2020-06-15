@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Calling Card</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="software_developer">Software Developer</string>
+    <string name="my_name">Amr ELTahhan</string>
+    <string name="email">amr.mekhemar@domain.com</string>
+    <string name="location_string">22, Asad, Rod El Farag, Cairo Governorate</string>
+    <string name="phone_icon_image">phone icon image</string>
+    <string name="phone_number">+201015151513</string>
+    <string name="restaurant_name">At3emny Aktr</string>
+    <string name="email_icon_image">email icon image</string>
+    <string name="sandwich_image">sandwich image</string>
+    <string name="location_icon_image">location icon image</string>
+    <string name="about">About</string>
+    <string name="app_info">Application Info</string>
+    <string name="version_code">Version code: %1$d</string>
+</resources>
