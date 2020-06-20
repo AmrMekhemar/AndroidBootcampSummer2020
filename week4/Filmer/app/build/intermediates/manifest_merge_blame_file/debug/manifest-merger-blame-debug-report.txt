@@ -1,0 +1,74 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.tahhan.filmer"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+8-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:4:1-62
+11-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:4:18-60
+12
+13    <application
+13-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:5:5-20:19
+14        android:allowBackup="true"
+14-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:6:9-35
+15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+15-->[androidx.core:core:1.3.0] C:\Users\Amr El-Tahhan\.gradle\caches\transforms-2\files-2.1\8106c9afeb27cc0c50f85995740f877c\core-1.3.0\AndroidManifest.xml:24:18-86
+16        android:debuggable="true"
+17        android:extractNativeLibs="false"
+18        android:icon="@mipmap/ic_launcher"
+18-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:7:9-43
+19        android:label="@string/app_name"
+19-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:8:9-41
+20        android:roundIcon="@mipmap/ic_launcher_round"
+20-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:9:9-54
+21        android:supportsRtl="true"
+21-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:10:9-35
+22        android:testOnly="true"
+23        android:theme="@style/AppTheme" >
+23-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:11:9-40
+24        <activity android:name="com.tahhan.filmer.view.Description" />
+24-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:12:9-63
+24-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:12:19-51
+25        <activity android:name="com.tahhan.filmer.view.MainActivity" >
+25-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:13:9-19:20
+25-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:13:19-52
+26            <intent-filter>
+26-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:14:13-18:29
+27                <action android:name="android.intent.action.MAIN" />
+27-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:15:17-69
+27-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:15:25-66
+28
+29                <category android:name="android.intent.category.LAUNCHER" />
+29-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:17:17-77
+29-->E:\bootcamp\week4\Filmer\app\src\main\AndroidManifest.xml:17:27-74
+30            </intent-filter>
+31        </activity>
+32
+33        <provider
+33-->[com.squareup.picasso:picasso:2.71828] C:\Users\Amr El-Tahhan\.gradle\caches\transforms-2\files-2.1\a4a9f2988781868110f36d5f093ec733\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+34            android:name="com.squareup.picasso.PicassoProvider"
+34-->[com.squareup.picasso:picasso:2.71828] C:\Users\Amr El-Tahhan\.gradle\caches\transforms-2\files-2.1\a4a9f2988781868110f36d5f093ec733\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
+35            android:authorities="com.tahhan.filmer.com.squareup.picasso"
+35-->[com.squareup.picasso:picasso:2.71828] C:\Users\Amr El-Tahhan\.gradle\caches\transforms-2\files-2.1\a4a9f2988781868110f36d5f093ec733\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+36            android:exported="false" />
+36-->[com.squareup.picasso:picasso:2.71828] C:\Users\Amr El-Tahhan\.gradle\caches\transforms-2\files-2.1\a4a9f2988781868110f36d5f093ec733\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+37        <provider
+37-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Amr El-Tahhan\.gradle\caches\transforms-2\files-2.1\5c7cdf17db77e6fa1e235092fe85ccd9\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
+38            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+38-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Amr El-Tahhan\.gradle\caches\transforms-2\files-2.1\5c7cdf17db77e6fa1e235092fe85ccd9\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
+39            android:authorities="com.tahhan.filmer.lifecycle-process"
+39-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Amr El-Tahhan\.gradle\caches\transforms-2\files-2.1\5c7cdf17db77e6fa1e235092fe85ccd9\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
+40            android:exported="false"
+40-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Amr El-Tahhan\.gradle\caches\transforms-2\files-2.1\5c7cdf17db77e6fa1e235092fe85ccd9\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
+41            android:multiprocess="true" />
+41-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Amr El-Tahhan\.gradle\caches\transforms-2\files-2.1\5c7cdf17db77e6fa1e235092fe85ccd9\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
+42    </application>
+43
+44</manifest>

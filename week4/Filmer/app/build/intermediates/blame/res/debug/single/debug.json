@@ -1,0 +1,90 @@
+[
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_popular_movies.xml.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\layout\\fragment_popular_movies.xml"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_delete.xml.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\drawable\\delete.xml"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_heart.xml.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\drawable\\heart.xml"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_description.xml.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\layout\\activity_description.xml"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_title.png.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\drawable\\title.png"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\layout_movie_menu_item.xml.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\layout\\movie_menu_item.xml"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_load.gif.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\drawable\\load.gif"
+    },
+    {
+        "merged": "E:\\bootcamp\\week4\\Filmer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "E:\\bootcamp\\week4\\Filmer\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    }
+]
