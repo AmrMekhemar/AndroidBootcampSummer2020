@@ -25,18 +25,22 @@ class MainActivity : AppCompatActivity() {
                 this,
                 Manifest.permission.CALL_PHONE
             ) != PackageManager.PERMISSION_GRANTED -> {
-                requestPermissions(
-                    arrayOf("android.permission.CALL_PHONE"),
-                    REQUEST_CODE
-                )
+                requestCallPermission()
             }
         }
 
     }
 
-    /*
-    * inflating the menu item we've created into the option menu
-    */
+     fun requestCallPermission() {
+        requestPermissions(
+            arrayOf(getString(R.string.call_phone_premission)),
+            REQUEST_CODE
+        )
+    }
+
+
+    //inflating the menu item we've created into the option menu
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = MenuInflater(this)
         inflater.inflate(R.menu.menu_item, menu);
