@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.AbsListView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
@@ -33,13 +34,30 @@ class PopularMoviesFragment : Fragment() {
         @JvmStatic
         fun newInstance() =
             PopularMoviesFragment()
+
         const val SCROLL_KEY = "scrollkey"
         val TAG = PopularMoviesFragment::class.java.name
     }
 
-    lateinit var layoutManager: GridLayoutManager
+    private val layoutManager: GridLayoutManager by lazy {
+        val orientation = resources.configuration.orientation
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            val lm = GridLayoutManager(context, 3)
+            lm.isUsingSpansToEstimateScrollbarDimensions
+            lm.spanSizeLookup = object : SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return if (position == 0) 3 else 1
+                }
+            }
+            lm
+        } else {
+            GridLayoutManager(context, 5)
+        }
+    }
 
     lateinit var movieViewModel: MovieViewModel
+
+    val position = MutableLiveData<Int>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,7 +69,7 @@ class PopularMoviesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setLayoutManager()
+        movieRV.layoutManager = layoutManager
         movieViewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
         movieViewModel.getMovies().observe(this.viewLifecycleOwner, Observer {
             movieRV.adapter = MovieAdapter(it) { movieID ->
@@ -60,43 +78,25 @@ class PopularMoviesFragment : Fragment() {
             }
 
 
-
         })
 
         favoritesFab.setOnClickListener {
             view.findNavController().navigate(R.id.action_popularMovies_to_favorites)
         }
-//        if (savedInstanceState != null && savedInstanceState.getInt(SCROLL_KEY) != 0) {
-//            movieRV.scrollToPosition(savedInstanceState.getInt(SCROLL_KEY))
-//            Log.d(TAG, "scrolled")
-//        }
-    }
-
-
-    private fun setLayoutManager() {
-        val orientation = resources.configuration.orientation
-        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
-            layoutManager = GridLayoutManager(context, 3)
-            layoutManager.isUsingSpansToEstimateScrollbarDimensions
-            layoutManager.spanSizeLookup = object : SpanSizeLookup() {
-                override fun getSpanSize(position: Int): Int {
-                    return if (position == 0) 3 else 1
-                }
-            }
-            movieRV.layoutManager = layoutManager
-        } else {
-            movieRV.layoutManager = GridLayoutManager(context, 5)
+        if (savedInstanceState != null && savedInstanceState.getInt(SCROLL_KEY) != 0) {
+            movieRV.scrollToPosition(savedInstanceState.getInt(SCROLL_KEY))
+            Log.d(TAG, "scrolled to position: ${savedInstanceState.getInt(SCROLL_KEY)}")
         }
-
-
     }
 
 
-//    override fun onSaveInstanceState(outState: Bundle) {
-//        super.onSaveInstanceState(outState)
-//        val scrollPosition:Int? = (movieRV.layoutManager as GridLayoutManager).findLastVisibleItemPosition()
-//        outState.putInt(SCROLL_KEY, scrollPosition!!)
-//        Log.d(TAG, "onSaved: scroll position $scrollPosition")
-//    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(SCROLL_KEY, layoutManager.findLastCompletelyVisibleItemPosition())
+        Log.d(
+            TAG,
+            "onSaved: scroll position ${layoutManager.findLastCompletelyVisibleItemPosition()}"
+        )
+        super.onSaveInstanceState(outState)
+    }
 
 }

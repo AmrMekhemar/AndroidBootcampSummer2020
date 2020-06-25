@@ -18,6 +18,7 @@ import com.tahhan.filmer.Constants
 import com.tahhan.filmer.R
 import com.tahhan.filmer.model.Movie
 import com.tahhan.filmer.viewmodel.MovieViewModel
+import kotlinx.android.synthetic.main.fragment_details.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -88,13 +89,12 @@ class DetailsFragment : Fragment() {
 
 
     private fun populateData(movie: Movie) {
-        view?.findViewById<TextView>(R.id.plot_synopsis)!!.text = movie.overview
-        view?.findViewById<TextView>(R.id.original_title)!!.text = movie.title
-        view?.findViewById<TextView>(R.id.user_rating)!!.text = movie.vote_average.toString()
-        view?.findViewById<TextView>(R.id.release_date)!!.text = movie.release_date
-        val backdrop = view?.findViewById<ImageView>(R.id.backdrop_ip)
+        plot_synopsis.text = movie.overview
+        original_title.text = movie.title
+        user_rating.text = movie.vote_average.toString()
+        release_date.text = movie.release_date
         Picasso.get().load(Constants.ROOT_BACKDROP_IMAGE_URL + movie.backdrop_path)
-            .error(R.color.colorPrimary).placeholder(R.color.colorAccent).into(backdrop)
+            .error(R.color.colorPrimary).placeholder(R.color.colorAccent).into(backdrop_ip)
 
     }
 
