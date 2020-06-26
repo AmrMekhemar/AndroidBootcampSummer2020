@@ -1,24 +1,17 @@
 package com.tahhan.filmer.view
 
 import android.content.res.Configuration
-import android.nfc.Tag
 import android.os.Bundle
-import android.os.Parcelable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AbsListView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.tahhan.filmer.R
 import com.tahhan.filmer.utils.MovieAdapter
 import com.tahhan.filmer.viewmodel.MovieViewModel
@@ -54,12 +47,11 @@ class PopularMoviesFragment : Fragment() {
 
     lateinit var movieViewModel: MovieViewModel
 
-
+    // Inflate the layout for this fragment
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_popular_movies, container, false)
     }
 

@@ -1,6 +1,8 @@
 package com.tahhan.filmer.view
 
+import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,13 +27,25 @@ import kotlinx.android.synthetic.main.fragment_favorites.*
  */
 class FavoritesFragment : Fragment() {
     lateinit var movieViewModel: MovieViewModel
-    private val POSOTION_KEY = "positionKey"
+    private val layoutManager: GridLayoutManager by lazy {
+        val orientation = resources.configuration.orientation
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            val lm = GridLayoutManager(context, 3)
+            lm.isUsingSpansToEstimateScrollbarDimensions
+            lm.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return if (position == 0) 3 else 1
+                }
+            }
+            lm
+        } else {
+            GridLayoutManager(context, 5)
+        }
+    }
 
     companion object {
-        @JvmStatic
-        fun newInstance() =
-            FavoritesFragment()
-
+        const val FAVORITE_SCROLL_KEY = "fav_scroll_key"
+        val TAG = FavoritesFragment::class.java.name
     }
 
     /**
@@ -79,14 +93,24 @@ class FavoritesFragment : Fragment() {
         itemTouchHelper.attachToRecyclerView(favoritesRV)
         Toast.makeText(context, getString(R.string.swipe_left_unfavorite), Toast.LENGTH_SHORT)
             .show()
+
+        if (savedInstanceState != null && savedInstanceState.getInt(FAVORITE_SCROLL_KEY) != 0) {
+            favoritesRV.scrollToPosition(savedInstanceState.getInt(FAVORITE_SCROLL_KEY))
+            Log.d(
+                PopularMoviesFragment.TAG, "scrolled to position: ${savedInstanceState.getInt(
+                    PopularMoviesFragment.SCROLL_KEY
+                )}"
+            )
+        }
     }
 
     //instantiating the viewModel and observing the favorite movies
     private fun retrieveMovies(view: View) {
         movieViewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
-        favoritesRV.layoutManager = GridLayoutManager(context, 2)
+        favoritesRV.layoutManager = layoutManager
         movieViewModel.getFavoriteMovieList().observe(this.viewLifecycleOwner, Observer {
             favoritesRV.adapter = MovieAdapter(it) { movieID ->
+                favoritesRV.layoutManager = null
                 navigateToDetailsFragment(movieID, view)
             }
         })
@@ -96,6 +120,18 @@ class FavoritesFragment : Fragment() {
     private fun navigateToDetailsFragment(movieID: Int, view: View) {
         val action = FavoritesFragmentDirections.actionFavoritesToDetails(movieID)
         view.findNavController().navigate(action)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(
+            FAVORITE_SCROLL_KEY,
+            layoutManager.findLastCompletelyVisibleItemPosition()
+        )
+        Log.d(
+            PopularMoviesFragment.TAG,
+            "onSaved: scroll position ${layoutManager.findLastCompletelyVisibleItemPosition()}"
+        )
+        super.onSaveInstanceState(outState)
     }
 
 
