@@ -5,6 +5,7 @@
 * **Repository Pattern**
 * **Single Activity, Multiple Fragments pattern**
 * **Retrofit**
+* **Picasso**
 * **ROOM**
 * **LiveData**
 * **Jetpack Navigation**
