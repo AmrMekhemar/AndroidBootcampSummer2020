@@ -9,6 +9,7 @@ import com.tahhan.filmer.database.MovieDB
 import com.tahhan.filmer.model.Movie
 import com.tahhan.filmer.model.MovieResponse
 import com.tahhan.filmer.networking.MyWebService
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -21,14 +22,18 @@ class MovieRepo(application: Application) {
     }
 
     var movieList: MutableLiveData<List<Movie>>? = null
+    var movie : MutableLiveData<Movie>? = MutableLiveData()
     private var database: MovieDB = MovieDB.getDatabase(application)
 
     fun getFavoriteMovieList(): LiveData<List<Movie>> {
         return database.movieDao().loadFavoriteMovies()
     }
 
-    fun getFavoriteMovieByID(id: String): Movie? {
-            return database.movieDao().loadMovieById(id)
+    fun getFavoriteMovieByID(id: String): MutableLiveData<Movie>? {
+        GlobalScope.launch {
+            movie?.postValue(database.movieDao().loadMovieById(id))
+        }
+        return movie
     }
 
     fun insertMovie(movie: Movie) {
@@ -36,9 +41,9 @@ class MovieRepo(application: Application) {
     }
 
     fun removeMovie(movie: Movie) {
-        GlobalScope.launch {
+
             database.movieDao().deleteMovie(movie)
-        }
+
     }
 
 
@@ -50,7 +55,7 @@ class MovieRepo(application: Application) {
 
     private fun requestPopularMovies() {
         val mService = MyWebService.retrofit.create(MyWebService::class.java)
-        mService.discoverPopularMovie(Constants.MOVIEDB_APIKEY)!!
+        mService.discoverPopularMovie(Constants.MOVIE_DB_API_KEY)!!
             .enqueue(object : Callback<MovieResponse?> {
                 override fun onFailure(call: Call<MovieResponse?>, t: Throwable) {
                     Log.d(TAG, "message: $t")

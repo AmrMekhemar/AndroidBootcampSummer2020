@@ -9,3 +9,5 @@
 * **Repository Pattern**
 * **LiveData**
 * **ROOM**
+* **SharedPrefs**
+* **Firebase Authentication**
