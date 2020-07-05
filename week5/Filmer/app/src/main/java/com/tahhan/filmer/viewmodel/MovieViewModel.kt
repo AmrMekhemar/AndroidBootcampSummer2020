@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.auth.FirebaseAuth
 import com.tahhan.filmer.model.Movie
 import com.tahhan.filmer.repository.MovieRepo
 import kotlinx.coroutines.GlobalScope
@@ -11,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class MovieViewModel(application: Application) : AndroidViewModel(application) {
     private val repo = MovieRepo(application)
-    private  var rvPosition: MutableLiveData<Int> = MutableLiveData()
+
     fun getMovies(): LiveData<List<Movie>> {
         return repo.getPopularMovieList()
     }
@@ -20,7 +21,8 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
         return repo.getFavoriteMovieList()
     }
 
-    fun getFavoriteMovieByID(id: String): Movie? {
+    fun getFavoriteMovieByID(id: String):  MutableLiveData<Movie>? {
+
         return repo.getFavoriteMovieByID(id)
     }
 
@@ -33,12 +35,6 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun getPosition(): LiveData<Int> {
-        return rvPosition
-    }
 
-    fun setPosition(position:Int){
-        rvPosition.value = position
-    }
 
 }

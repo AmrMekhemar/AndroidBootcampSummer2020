@@ -1,19 +1,22 @@
 package com.tahhan.filmer.view
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
+import com.google.firebase.auth.FirebaseAuth
 import com.tahhan.filmer.R
 import com.tahhan.filmer.utils.MovieAdapter
+import com.tahhan.filmer.view.MainActivity.Companion.sharedPref
 import com.tahhan.filmer.viewmodel.MovieViewModel
 import kotlinx.android.synthetic.main.fragment_popular_movies.*
 
@@ -55,6 +58,7 @@ class PopularMoviesFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_popular_movies, container, false)
     }
 
+ 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         movieRV.layoutManager = layoutManager
@@ -64,6 +68,7 @@ class PopularMoviesFragment : Fragment() {
                 val action = PopularMoviesFragmentDirections.actionPopularMoviesToDetails(movieID)
                 movieRV.layoutManager = null
                 view.findNavController().navigate(action)
+
             }
 
 
@@ -78,6 +83,21 @@ class PopularMoviesFragment : Fragment() {
             movieRV.scrollToPosition(savedInstanceState.getInt(SCROLL_KEY))
             Log.d(TAG, "scrolled to position: ${savedInstanceState.getInt(SCROLL_KEY)}")
         }
+
+
+    }
+
+    private fun setupToolbar() {
+        toolbar.inflateMenu(R.menu.menu)
+        toolbar.setOnMenuItemClickListener { menuItem ->
+
+            when (menuItem.itemId) {
+                R.id.item_user_info -> initDialog()
+                R.id.item_sign_out -> signOut()
+            }
+            true
+        }
+
     }
 
 
@@ -90,6 +110,26 @@ class PopularMoviesFragment : Fragment() {
         super.onSaveInstanceState(outState)
     }
 
+
+    // a function to instantiate an alert dialog
+    private fun initDialog() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(getString(R.string.user_info))
+        builder.setMessage(
+            "user name: ${LoginFragment.mAuth.currentUser!!.displayName}\n" +
+                    "email: ${LoginFragment.mAuth.currentUser!!.email} "
+        ).show()
+    }
+
+    private fun signOut() {
+        LoginFragment.mAuth.signOut()
+        findNavController().navigate(PopularMoviesFragmentDirections.actionPopularMoviesToLogin())
+        with(sharedPref.edit()) {
+            putBoolean(getString(R.string.login_state_key), false)
+            commit()
+        }
+
+    }
 
 
 }

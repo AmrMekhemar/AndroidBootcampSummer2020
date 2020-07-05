@@ -3,22 +3,29 @@ package com.tahhan.filmer.view
 import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.tahhan.filmer.R
 import com.tahhan.filmer.utils.MovieAdapter
 import com.tahhan.filmer.viewmodel.MovieViewModel
 import kotlinx.android.synthetic.main.fragment_favorites.*
+import kotlinx.android.synthetic.main.fragment_favorites.toolbar
+import kotlinx.android.synthetic.main.fragment_popular_movies.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+
 
 /**
  * A simple [FavoritesFragment] Fragment.
@@ -73,7 +80,10 @@ class FavoritesFragment : Fragment() {
             val position = viewHolder.adapterPosition
             val adapter = favoritesRV.adapter as MovieAdapter
             // Remove swiped item from the Database
-            movieViewModel.removeMovie(adapter.movieList[position])
+            GlobalScope.launch(Dispatchers.IO) {
+                movieViewModel.removeMovie(adapter.movieList[position])
+            }
+
         }
     }
 
@@ -86,8 +96,17 @@ class FavoritesFragment : Fragment() {
     }
 
 
+    /**
+     * a function to trigger setup the Toolbar and retrieve movies
+     * and persisting the state of the recyclerView
+     * @param view
+     * @param savedInstanceState
+     * @return does not return anything.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupToolbar()
+
         retrieveMovies(view)
         val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
         itemTouchHelper.attachToRecyclerView(favoritesRV)
@@ -110,8 +129,9 @@ class FavoritesFragment : Fragment() {
         favoritesRV.layoutManager = layoutManager
         movieViewModel.getFavoriteMovieList().observe(this.viewLifecycleOwner, Observer {
             favoritesRV.adapter = MovieAdapter(it) { movieID ->
-                favoritesRV.layoutManager = null
                 navigateToDetailsFragment(movieID, view)
+                favoritesRV.layoutManager = null
+
             }
         })
     }
@@ -132,6 +152,38 @@ class FavoritesFragment : Fragment() {
             "onSaved: scroll position ${layoutManager.findLastCompletelyVisibleItemPosition()}"
         )
         super.onSaveInstanceState(outState)
+    }
+
+    private fun setupToolbar() {
+        toolbar.inflateMenu(R.menu.menu)
+        toolbar.setOnMenuItemClickListener { menuItem ->
+
+            when (menuItem.itemId) {
+                R.id.item_user_info -> initDialog()
+                R.id.item_sign_out -> signOut()
+            }
+            true
+        }
+    }
+
+    // a function to instantiate an alert dialog filled with the user details
+    private fun initDialog() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(getString(R.string.user_info))
+        builder.setMessage(
+            "user name: ${LoginFragment.mAuth.currentUser!!.displayName}\n" +
+                    "email: ${LoginFragment.mAuth.currentUser!!.email} "
+        ).show()
+    }
+
+    // a function to sign out a user
+    private fun signOut() {
+        LoginFragment.mAuth.signOut()
+        findNavController().navigate(FavoritesFragmentDirections.actionFavoritesToLogin())
+        with(MainActivity.sharedPref.edit()) {
+            putBoolean(getString(R.string.login_state_key), false)
+            commit()
+        }
     }
 
 

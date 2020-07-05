@@ -1,12 +1,14 @@
-# Libs and APIs which I've used
+# Filmer App
 
+## Libs and APIs I've used 
 
-* **MVVM architecture pattern**
-* **Repository Pattern**
-* **Single Activity, Multiple Fragments pattern**
-* **Retrofit**
-* **Picasso**
-* **ROOM**
-* **LiveData**
 * **Jetpack Navigation**
+* **MVVM Architecture Pattern**
+* **Retrofit**
+* **Picasso** 
+* **Repository Pattern**
+* **LiveData**
+* **ROOM**
+* **SharedPrefs**
+* **Firebase Authentication**
 

@@ -7,8 +7,9 @@
 
     <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:cardCornerRadius="32dp">
+        android:layout_height="@dimen/movie_card_width"
+        app:cardCornerRadius="@dimen/margin_big">
+
 
 
         <ImageView
@@ -26,8 +27,9 @@
         android:id="@+id/item_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:padding="@dimen/margin_default"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="14sp" />
+        android:textSize="@dimen/font_very_small" />
+
 </LinearLayout>

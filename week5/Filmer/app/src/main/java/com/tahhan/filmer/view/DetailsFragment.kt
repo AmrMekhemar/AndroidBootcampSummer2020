@@ -1,16 +1,14 @@
 package com.tahhan.filmer.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
@@ -19,8 +17,9 @@ import com.tahhan.filmer.R
 import com.tahhan.filmer.model.Movie
 import com.tahhan.filmer.viewmodel.MovieViewModel
 import kotlinx.android.synthetic.main.fragment_details.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
+
+
 
 
 /**
@@ -28,18 +27,19 @@ import kotlinx.coroutines.launch
  * to display the details of a movie
  */
 class DetailsFragment : Fragment() {
-    lateinit var movieViewModel: MovieViewModel
+    private lateinit var movieViewModel: MovieViewModel
     private lateinit var args: DetailsFragmentArgs
-    private lateinit var fab: FloatingActionButton
     var movie: Movie? = null
+    private var movieLiveData = MutableLiveData<Movie>()
+    private var isSavedLiveData = MutableLiveData<Boolean>()
 
-
+    // Inflate the layout for this fragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_details, container, false)
     }
 
@@ -50,24 +50,22 @@ class DetailsFragment : Fragment() {
             args = DetailsFragmentArgs.fromBundle(it)
 
         }
-        fab = view.findViewById(R.id.fab)
-        movieViewModel.getMovies().observe(this.viewLifecycleOwner, Observer { movieList ->
-            movie = movieList.find { movie ->
-                movie.id == args.movieID
-            }
-            setFabState()
-            populateData(movie!!)
-        })
+        populateData()
+        movie = movieLiveData.value
         fab.setOnClickListener {
-            GlobalScope.launch {
-                val flag = movieViewModel.getFavoriteMovieByID(args.movieID.toString())
-                if (flag == null) {
+            GlobalScope.launch(Dispatchers.IO) {
+                if (isSavedLiveData.value == false) {
+
                     movieViewModel.insertMovie(movie!!)
                     Snackbar.make(
                         view.rootView,
                         getString(R.string.movie_inserted),
                         Snackbar.LENGTH_SHORT
                     ).show()
+                    fab.setImageDrawable(resources.getDrawable(R.drawable.delete))
+                    isSavedLiveData.postValue(true)
+
+
                 } else {
                     movieViewModel.removeMovie(movie!!)
                     Snackbar.make(
@@ -75,31 +73,67 @@ class DetailsFragment : Fragment() {
                         getString(R.string.movie_removed),
                         Snackbar.LENGTH_SHORT
                     ).show()
+                    fab.setImageDrawable(resources.getDrawable(R.drawable.heart))
+                    isSavedLiveData.postValue(false)
                 }
-                setFabState()
+
+
             }
         }
     }
 
+    /**
+     * A function to retrieve data from the database or the api
+     * depending on whether the movie is saved on the database or not
+     */
+    private fun populateData() {
+        movieViewModel.getFavoriteMovieByID(args.movieID.toString())
+            ?.observe(this.viewLifecycleOwner,
+                Observer {
+                    fillData(it)
+                    movie = it
+                    fab.setImageDrawable(resources.getDrawable(R.drawable.delete))
+                    fillData(movie)
+                    if (movie == null) {
+                        movieViewModel.getMovies()
+                            .observe(this.viewLifecycleOwner, Observer { movieList ->
+                                movie = movieList.find { movie ->
+                                    movie.id == args.movieID
+                                }
+                                fab.setImageDrawable(resources.getDrawable(R.drawable.heart))
+                                fillData(movie)
 
-    private fun populateData(movie: Movie) {
-        plot_synopsis.text = movie.overview
-        original_title.text = movie.title
-        user_rating.text = movie.vote_average.toString()
-        release_date.text = movie.release_date
-        Picasso.get().load(Constants.ROOT_BACKDROP_IMAGE_URL + movie.backdrop_path)
-            .error(R.color.colorPrimary).placeholder(R.color.colorAccent).into(backdrop_ip)
+                            })
+                        isSavedLiveData.postValue(false)
+                    }
+                    else {
+                        movieLiveData.postValue(movie)
+                        isSavedLiveData.postValue(true)
+
+                    }
+                }
+
+            )
+
 
     }
 
-    private fun setFabState() {
-        GlobalScope.launch {
-            val movie = movieViewModel.getFavoriteMovieByID(args.movieID.toString())
-            if (movie == null) {
-                fab.setImageDrawable(resources.getDrawable(R.drawable.heart))
-            } else
-                fab.setImageDrawable(resources.getDrawable(R.drawable.delete))
+    /**
+     * A function to fill the view with the movie details
+     * @param movie
+     */
+    private fun fillData(movie: Movie?) {
+        if (movie != null) {
+            plot_synopsis.text = movie.overview
+            original_title.text = movie.title
+            user_rating.text = movie.vote_average.toString()
+            release_date.text = movie.release_date
+            Picasso.get().load(Constants.ROOT_BACKDROP_IMAGE_URL + movie.backdrop_path)
+                .error(R.color.colorPrimary).placeholder(R.color.colorAccent).into(backdrop_ip)
         }
+
+
+
     }
 
 }
