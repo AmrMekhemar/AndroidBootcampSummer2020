@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Filmer</string>
+    <string name="imageposter_is_shown_here">imagePoster is shown here</string>
+    <string name="most_popular_movies">Most Popular Movies</string>
+    <string name="favourite_movies">Favorite Movies</string>
+    <string name="plot_synopsis">Plot Synopsis</string>
+    <string name="user_rating">User Rating</string>
+    <string name="release_date">Release Date</string>
+    <string name="backdrop_image">backdrop image</string>
+    <string name="original_title">original title</string>
+    <string name="movie_details">Movie Details</string>
+    <string name="favorite_movies">Favorite Movies</string>
+    <string name="swipe_left_unfavorite">Swipe left to un-favorite a movie</string>
+    <string name="movie_inserted">movie has beem inserted</string>
+    <string name="movie_removed">movie has been removed</string>
+    <string name="on_move">on Move</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="create_one">Create one!</string>
+    <string name="login">Login</string>
+    <string name="user_info">User Info</string>
+    <string name="sign_out">Sign out</string>
+    <string name="login_state_key">Login State Key</string>
+    <string name="auth_success">Authentication successful</string>
+    <string name="shoudBeLessThan8">\"Passwords should be at least 8 characters \"</string>
+    <string name="notMatching">Passwords don\'t Match</string>
+    <string name="fillAllFields">You must fill out all the fields</string>
+    <string name="registrationFailed">registration failed.</string>
+    <string name="registrationSuccessful">Registration Successful</string>
+
+</resources>

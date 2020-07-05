@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "52568357257",
+    "firebase_url": "https://filmer-be212.firebaseio.com",
+    "project_id": "filmer-be212",
+    "storage_bucket": "filmer-be212.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52568357257:android:ad50a19f86586695bf8958",
+        "android_client_info": {
+          "package_name": "com.tahhan.filmer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52568357257-1qqr3qpt8v3rs0t7ck936nevcnfqjlgp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNUR0w3soHf7ROPGnsISiPVEy-N9mz8Ls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52568357257-1qqr3qpt8v3rs0t7ck936nevcnfqjlgp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
