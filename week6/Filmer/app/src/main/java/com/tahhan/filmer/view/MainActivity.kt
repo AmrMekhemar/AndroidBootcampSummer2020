@@ -1,11 +1,9 @@
 package com.tahhan.filmer.view
 
-
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.tahhan.filmer.R
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,17 +21,16 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             val graph =
                 nav_host_fragment.findNavController().navInflater.inflate(R.navigation.nav_graph)
-            if (loginState) {
-                graph.startDestination = R.id.popularMoviesFragment
+            graph.startDestination = if (loginState) {
+                R.id.popularMoviesFragment
             } else {
-                graph.startDestination = R.id.loginFragment
+                R.id.loginFragment
             }
             nav_host_fragment.findNavController().graph = graph
         }
 
     }
 }
-
 
 
 

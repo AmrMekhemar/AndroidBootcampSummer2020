@@ -4,21 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
+import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
 import com.tahhan.filmer.Constants
 import com.tahhan.filmer.R
 import com.tahhan.filmer.model.Movie
 import com.tahhan.filmer.viewmodel.MovieViewModel
 import kotlinx.android.synthetic.main.fragment_details.*
-import kotlinx.coroutines.Dispatchers
-
 
 
 
@@ -34,18 +30,16 @@ class DetailsFragment : Fragment() {
     private var isSavedLiveData = MutableLiveData<Boolean>()
 
     // Inflate the layout for this fragment
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        movieViewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
+        movieViewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
         arguments?.let {
             args = DetailsFragmentArgs.fromBundle(it)
 
@@ -53,32 +47,27 @@ class DetailsFragment : Fragment() {
         populateData()
         movie = movieLiveData.value
         fab.setOnClickListener {
-            GlobalScope.launch(Dispatchers.IO) {
-                if (isSavedLiveData.value == false) {
+            if (isSavedLiveData.value == false) {
+                movieViewModel.insertMovie(movie!!)
+                Toast.makeText(
+                    view.context,
+                    getString(R.string.movie_inserted),
+                    Toast.LENGTH_SHORT
+                ).show()
+                fab.setImageDrawable(resources.getDrawable(R.drawable.delete))
+                isSavedLiveData.postValue(true)
 
-                    movieViewModel.insertMovie(movie!!)
-                    Snackbar.make(
-                        view.rootView,
-                        getString(R.string.movie_inserted),
-                        Snackbar.LENGTH_SHORT
-                    ).show()
-                    fab.setImageDrawable(resources.getDrawable(R.drawable.delete))
-                    isSavedLiveData.postValue(true)
-
-
-                } else {
-                    movieViewModel.removeMovie(movie!!)
-                    Snackbar.make(
-                        view.rootView,
-                        getString(R.string.movie_removed),
-                        Snackbar.LENGTH_SHORT
-                    ).show()
-                    fab.setImageDrawable(resources.getDrawable(R.drawable.heart))
-                    isSavedLiveData.postValue(false)
-                }
-
-
+            } else {
+                movieViewModel.removeMovie(movie!!)
+                Toast.makeText(
+                    view.context,
+                    getString(R.string.movie_removed),
+                    Toast.LENGTH_SHORT
+                ).show()
+                fab.setImageDrawable(resources.getDrawable(R.drawable.heart))
+                isSavedLiveData.postValue(false)
             }
+
         }
     }
 
@@ -88,7 +77,7 @@ class DetailsFragment : Fragment() {
      */
     private fun populateData() {
         movieViewModel.getFavoriteMovieByID(args.movieID.toString())
-            ?.observe(this.viewLifecycleOwner,
+            .observe(this.viewLifecycleOwner,
                 Observer {
                     fillData(it)
                     movie = it
@@ -105,8 +94,7 @@ class DetailsFragment : Fragment() {
 
                             })
                         isSavedLiveData.postValue(false)
-                    }
-                    else {
+                    } else {
                         movieLiveData.postValue(movie)
                         isSavedLiveData.postValue(true)
 
@@ -131,7 +119,6 @@ class DetailsFragment : Fragment() {
             Picasso.get().load(Constants.ROOT_BACKDROP_IMAGE_URL + movie.backdrop_path)
                 .error(R.color.colorPrimary).placeholder(R.color.colorAccent).into(backdrop_ip)
         }
-
 
 
     }

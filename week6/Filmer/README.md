@@ -8,7 +8,8 @@
 * **Picasso** 
 * **Repository Pattern**
 * **LiveData**
-* **ROOM**
+* **Room with Kotlin Coroutines support**
+* **Flow API**
 * **SharedPrefs**
 * **Firebase Authentication**
 

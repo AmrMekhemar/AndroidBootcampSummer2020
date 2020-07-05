@@ -10,7 +10,6 @@
         android:name="com.tahhan.filmer.view.PopularMoviesFragment"
         android:label="PopularMoviesFragment"
         tools:layout="@layout/fragment_popular_movies">
-
         <action
             android:id="@+id/action_popularMovies_to_details"
             app:destination="@id/detailsFragment" />
@@ -20,14 +19,12 @@
         <action
             android:id="@+id/action_popularMovies_to_login"
             app:destination="@id/loginFragment" />
-
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.tahhan.filmer.view.DetailsFragment"
         android:label="DetailsFragment"
         tools:layout="@layout/fragment_details">
-
         <argument
             android:name="movieID"
             app:argType="integer" />
@@ -35,7 +32,6 @@
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.tahhan.filmer.view.FavoritesFragment"
-
         android:label="FavoritesFragment"
         tools:layout="@layout/fragment_favorites">
         <action
@@ -72,6 +68,5 @@
             app:destination="@id/popularMoviesFragment"
             app:popUpTo="@id/popularMoviesFragment"
             app:popUpToInclusive="true" />
-
     </fragment>
 </navigation>

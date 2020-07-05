@@ -18,7 +18,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="192.168.68.101:5555" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="192.168.94.101:5555" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -40,8 +40,8 @@
         <option value="Kotlin Interface" />
         <option value="navigationResourceFile" />
         <option value="layoutResourceFile" />
-        <option value="resourceFile" />
         <option value="Kotlin Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -55,6 +55,7 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="192.168.217.101:5555" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-06-22T17:38:16.966Z" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.recentlyUsedThemes" value="Base.Theme.MaterialComponents.Light.DarkActionBar" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
     <property name="settings.editor.selected.configurable" value="http.proxy" />
@@ -168,14 +169,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="543" y="271" key="AndroidCreateResourceDirectoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593220273024" />
-    <state x="540" y="268" key="AndroidCreateResourceFileDialog" timestamp="1593315024191">
+    <state x="540" y="268" key="AndroidCreateResourceFileDialog" timestamp="1593472369215">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="540" y="268" key="AndroidCreateResourceFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593315024191" />
+    <state x="540" y="268" key="AndroidCreateResourceFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593472369215" />
     <state x="811" y="294" key="AndroidCreateXmlResourceDialog" timestamp="1593408206463">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="811" y="294" key="AndroidCreateXmlResourceDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593408206463" />
+    <state x="440" y="159" key="AndroidThemeDialog" timestamp="1593472882614">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="159" key="AndroidThemeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593472882614" />
     <state width="1846" height="550" key="GridCell.Tab.0.bottom" timestamp="1593404839620">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -208,9 +213,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="532" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1593221446973" />
-    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1593406943887">
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1593973120606">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1593406943887" />
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1593973120606" />
   </component>
 </project>

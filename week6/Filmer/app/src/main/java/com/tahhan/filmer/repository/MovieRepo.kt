@@ -11,6 +11,7 @@ import com.tahhan.filmer.model.MovieResponse
 import com.tahhan.filmer.networking.MyWebService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,30 +23,21 @@ class MovieRepo(application: Application) {
     }
 
     var movieList: MutableLiveData<List<Movie>>? = null
-    var movie : MutableLiveData<Movie>? = MutableLiveData()
-
+    var movie: MutableLiveData<Movie>? = MutableLiveData()
     private var database: MovieDB = MovieDB.getDatabase(application)
 
-    fun getFavoriteMovieList(): LiveData<List<Movie>> {
-        return database.movieDao().loadFavoriteMovies()
+    fun getFavoriteMovieList(): Flow<List<Movie>> = database.movieDao().loadFavoriteMovies()
+
+    fun getFavoriteMovieByID(id: String): Flow<Movie> = database.movieDao().loadMovieById(id)
+
+
+    suspend fun insertMovie(movie: Movie) {
+        database.movieDao().insertMovie(movie)
     }
 
-    fun getFavoriteMovieByID(id: String): MutableLiveData<Movie>? {
-        GlobalScope.launch {
-            movie?.postValue(database.movieDao().loadMovieById(id))
-        }
-        return movie
+    suspend fun removeMovie(movie: Movie) {
 
-    }
-
-    fun insertMovie(movie: Movie) {
-            database.movieDao().insertMovie(movie)
-    }
-
-    fun removeMovie(movie: Movie) {
-
-            database.movieDao().deleteMovie(movie)
-
+        database.movieDao().deleteMovie(movie)
 
     }
 

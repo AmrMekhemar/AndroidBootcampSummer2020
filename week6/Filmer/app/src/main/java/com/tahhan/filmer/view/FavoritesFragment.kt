@@ -8,23 +8,18 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
 import com.tahhan.filmer.R
 import com.tahhan.filmer.utils.MovieAdapter
 import com.tahhan.filmer.viewmodel.MovieViewModel
 import kotlinx.android.synthetic.main.fragment_favorites.*
 import kotlinx.android.synthetic.main.fragment_favorites.toolbar
-import kotlinx.android.synthetic.main.fragment_popular_movies.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 
 /**
@@ -80,9 +75,7 @@ class FavoritesFragment : Fragment() {
             val position = viewHolder.adapterPosition
             val adapter = favoritesRV.adapter as MovieAdapter
             // Remove swiped item from the Database
-            GlobalScope.launch(Dispatchers.IO) {
                 movieViewModel.removeMovie(adapter.movieList[position])
-            }
 
         }
     }
@@ -95,7 +88,6 @@ class FavoritesFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_favorites, container, false)
     }
 
-
     /**
      * a function to trigger setup the Toolbar and retrieve movies
      * and persisting the state of the recyclerView
@@ -106,7 +98,6 @@ class FavoritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
-
         retrieveMovies(view)
         val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
         itemTouchHelper.attachToRecyclerView(favoritesRV)
@@ -125,13 +116,12 @@ class FavoritesFragment : Fragment() {
 
     //instantiating the viewModel and observing the favorite movies
     private fun retrieveMovies(view: View) {
-        movieViewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
+        movieViewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
         favoritesRV.layoutManager = layoutManager
         movieViewModel.getFavoriteMovieList().observe(this.viewLifecycleOwner, Observer {
             favoritesRV.adapter = MovieAdapter(it) { movieID ->
                 navigateToDetailsFragment(movieID, view)
                 favoritesRV.layoutManager = null
-
             }
         })
     }
@@ -185,6 +175,5 @@ class FavoritesFragment : Fragment() {
             commit()
         }
     }
-
 
 }
