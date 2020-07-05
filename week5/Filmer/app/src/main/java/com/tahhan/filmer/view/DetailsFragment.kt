@@ -18,8 +18,8 @@ import com.tahhan.filmer.model.Movie
 import com.tahhan.filmer.viewmodel.MovieViewModel
 import kotlinx.android.synthetic.main.fragment_details.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+
+
 
 
 /**
@@ -34,10 +34,12 @@ class DetailsFragment : Fragment() {
     private var isSavedLiveData = MutableLiveData<Boolean>()
 
     // Inflate the layout for this fragment
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.fragment_details, container, false)
     }
 
@@ -53,6 +55,7 @@ class DetailsFragment : Fragment() {
         fab.setOnClickListener {
             GlobalScope.launch(Dispatchers.IO) {
                 if (isSavedLiveData.value == false) {
+
                     movieViewModel.insertMovie(movie!!)
                     Snackbar.make(
                         view.rootView,
@@ -61,6 +64,7 @@ class DetailsFragment : Fragment() {
                     ).show()
                     fab.setImageDrawable(resources.getDrawable(R.drawable.delete))
                     isSavedLiveData.postValue(true)
+
 
                 } else {
                     movieViewModel.removeMovie(movie!!)
@@ -72,6 +76,7 @@ class DetailsFragment : Fragment() {
                     fab.setImageDrawable(resources.getDrawable(R.drawable.heart))
                     isSavedLiveData.postValue(false)
                 }
+
 
             }
         }
@@ -126,6 +131,7 @@ class DetailsFragment : Fragment() {
             Picasso.get().load(Constants.ROOT_BACKDROP_IMAGE_URL + movie.backdrop_path)
                 .error(R.color.colorPrimary).placeholder(R.color.colorAccent).into(backdrop_ip)
         }
+
 
 
     }

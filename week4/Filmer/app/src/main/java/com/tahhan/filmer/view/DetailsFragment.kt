@@ -34,12 +34,6 @@ class DetailsFragment : Fragment() {
     var movie: Movie? = null
 
 
-    companion object {
-        @JvmStatic
-        fun newInstance() = DetailsFragment()
-        val TAG = DetailsFragment::class.java.name
-    }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

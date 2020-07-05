@@ -11,6 +11,7 @@
         app:cardCornerRadius="@dimen/margin_big">
 
 
+
         <ImageView
             android:id="@+id/item_poster"
             android:layout_width="match_parent"
@@ -30,4 +31,5 @@
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="@dimen/font_very_small" />
+
 </LinearLayout>

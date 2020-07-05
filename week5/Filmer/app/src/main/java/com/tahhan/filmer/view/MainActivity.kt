@@ -1,5 +1,6 @@
 package com.tahhan.filmer.view
 
+
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
+
 
 
 

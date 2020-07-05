@@ -151,6 +151,7 @@
             </androidx.cardview.widget.CardView>
 
 
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
@@ -163,5 +164,6 @@
         android:src="@drawable/heart"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

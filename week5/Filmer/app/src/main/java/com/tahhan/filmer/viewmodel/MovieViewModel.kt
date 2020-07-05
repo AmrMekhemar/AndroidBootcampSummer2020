@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 
 class MovieViewModel(application: Application) : AndroidViewModel(application) {
     private val repo = MovieRepo(application)
+
     fun getMovies(): LiveData<List<Movie>> {
         return repo.getPopularMovieList()
     }
@@ -21,6 +22,7 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun getFavoriteMovieByID(id: String):  MutableLiveData<Movie>? {
+
         return repo.getFavoriteMovieByID(id)
     }
 
@@ -32,9 +34,6 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
         repo.removeMovie(movie)
 
     }
-
-
-
 
 
 

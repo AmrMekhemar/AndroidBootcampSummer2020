@@ -50,7 +50,7 @@ class MovieRepo(application: Application) {
 
     private fun requestPopularMovies() {
         val mService = MyWebService.retrofit.create(MyWebService::class.java)
-        mService.discoverPopularMovie(Constants.MOVIEDB_APIKEY)!!
+        mService.discoverPopularMovie(Constants.MOVIE_DB_API_KEY)!!
             .enqueue(object : Callback<MovieResponse?> {
                 override fun onFailure(call: Call<MovieResponse?>, t: Throwable) {
                     Log.d(TAG, "message: $t")

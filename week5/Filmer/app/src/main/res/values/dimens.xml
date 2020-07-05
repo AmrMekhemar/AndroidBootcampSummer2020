@@ -12,4 +12,5 @@
     <dimen name="font_small">16sp</dimen>
     <dimen name="font_very_small">14sp</dimen>
     <dimen name="movie_card_width">150dp</dimen>
+
 </resources>

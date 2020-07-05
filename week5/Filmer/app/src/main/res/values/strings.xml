@@ -26,4 +26,5 @@
     <string name="fillAllFields">You must fill out all the fields</string>
     <string name="registrationFailed">registration failed.</string>
     <string name="registrationSuccessful">Registration Successful</string>
+
 </resources>

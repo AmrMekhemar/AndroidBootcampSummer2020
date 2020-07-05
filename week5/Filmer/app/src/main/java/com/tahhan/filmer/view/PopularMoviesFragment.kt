@@ -58,10 +58,9 @@ class PopularMoviesFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_popular_movies, container, false)
     }
 
-    @SuppressLint("RestrictedApi")
+ 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupToolbar()
         movieRV.layoutManager = layoutManager
         movieViewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
         movieViewModel.getMovies().observe(this.viewLifecycleOwner, Observer {
@@ -71,6 +70,7 @@ class PopularMoviesFragment : Fragment() {
                 view.findNavController().navigate(action)
 
             }
+
 
         })
 
@@ -85,7 +85,6 @@ class PopularMoviesFragment : Fragment() {
         }
 
 
-
     }
 
     private fun setupToolbar() {
@@ -98,6 +97,7 @@ class PopularMoviesFragment : Fragment() {
             }
             true
         }
+
     }
 
 
@@ -130,5 +130,6 @@ class PopularMoviesFragment : Fragment() {
         }
 
     }
+
 
 }

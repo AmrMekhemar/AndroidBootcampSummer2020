@@ -26,6 +26,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
+
 /**
  * A simple [FavoritesFragment] Fragment.
  * retrieves the Favorite movies from the database
@@ -82,6 +83,7 @@ class FavoritesFragment : Fragment() {
             GlobalScope.launch(Dispatchers.IO) {
                 movieViewModel.removeMovie(adapter.movieList[position])
             }
+
         }
     }
 
@@ -93,6 +95,7 @@ class FavoritesFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_favorites, container, false)
     }
 
+
     /**
      * a function to trigger setup the Toolbar and retrieve movies
      * and persisting the state of the recyclerView
@@ -103,6 +106,7 @@ class FavoritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
+
         retrieveMovies(view)
         val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
         itemTouchHelper.attachToRecyclerView(favoritesRV)
@@ -127,6 +131,7 @@ class FavoritesFragment : Fragment() {
             favoritesRV.adapter = MovieAdapter(it) { movieID ->
                 navigateToDetailsFragment(movieID, view)
                 favoritesRV.layoutManager = null
+
             }
         })
     }
@@ -180,5 +185,6 @@ class FavoritesFragment : Fragment() {
             commit()
         }
     }
+
 
 }

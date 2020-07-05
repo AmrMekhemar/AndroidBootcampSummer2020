@@ -39,6 +39,7 @@ class MovieAdapter(movies: List<Movie>, val listener: (Int) -> Unit) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val movieItem: Movie = movieList[position]
         holder.ItemTitle.text = movieItem.title
+
         val imagePath: String = Constants.ROOT_POSTER_IMAGE_URL + movieItem.poster_path
         Picasso.get()
             .load(imagePath)
@@ -47,6 +48,7 @@ class MovieAdapter(movies: List<Movie>, val listener: (Int) -> Unit) :
             .into(holder.ItemPoster)
 
         holder.viewHolderView.setOnClickListener {
+
             listener(movieItem.id)
         }
 

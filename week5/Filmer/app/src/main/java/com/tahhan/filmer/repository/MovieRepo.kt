@@ -23,6 +23,7 @@ class MovieRepo(application: Application) {
 
     var movieList: MutableLiveData<List<Movie>>? = null
     var movie : MutableLiveData<Movie>? = MutableLiveData()
+
     private var database: MovieDB = MovieDB.getDatabase(application)
 
     fun getFavoriteMovieList(): LiveData<List<Movie>> {
@@ -34,6 +35,7 @@ class MovieRepo(application: Application) {
             movie?.postValue(database.movieDao().loadMovieById(id))
         }
         return movie
+
     }
 
     fun insertMovie(movie: Movie) {
@@ -43,6 +45,7 @@ class MovieRepo(application: Application) {
     fun removeMovie(movie: Movie) {
 
             database.movieDao().deleteMovie(movie)
+
 
     }
 
