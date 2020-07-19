@@ -2,10 +2,8 @@ package com.example.nytarticles.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kotlinx.serialization.Serializable
 
 @Entity
-@Serializable
 data class Multimedia(
     @PrimaryKey
     var url: String = "",

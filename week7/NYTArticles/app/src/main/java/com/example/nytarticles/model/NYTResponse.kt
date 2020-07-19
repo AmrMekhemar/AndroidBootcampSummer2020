@@ -1,8 +1,6 @@
 package com.example.nytarticles.model
 
-import kotlinx.serialization.Serializable
 
-@Serializable
 data class NYTResponse (
     val status : String,
     val copyright : String,

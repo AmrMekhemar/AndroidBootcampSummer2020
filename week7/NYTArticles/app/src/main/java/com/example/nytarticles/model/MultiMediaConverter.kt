@@ -5,8 +5,8 @@ import androidx.room.TypeConverter
 
 class MultiMediaConverter {
     @TypeConverter
-    fun multiMediaListToString(multimediaList: List<Multimedia>): String =
-        multimediaList.joinToString(separator = ",") { it.url }
+    fun multiMediaListToString(multimediaList: List<Multimedia>?): String? =
+        multimediaList?.joinToString(separator = ",") { it.url }
 
     @TypeConverter
     fun stringToMultiMediaList(multimediaListString: String): List<Multimedia>? {

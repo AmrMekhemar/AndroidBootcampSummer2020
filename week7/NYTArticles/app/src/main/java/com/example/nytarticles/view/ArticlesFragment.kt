@@ -95,6 +95,7 @@ class ArticlesFragment : Fragment() {
     private fun fetchDataFromInternet() {
         networkStatusChecker.performIfConnectedToInternet {
             articlesViewModel.getArticleList().observe(this.viewLifecycleOwner, Observer {
+                Log.d(TAG, "internet data = $it")
                 articlesViewModel.saveArticlesListToDB(it)
             })
         }
