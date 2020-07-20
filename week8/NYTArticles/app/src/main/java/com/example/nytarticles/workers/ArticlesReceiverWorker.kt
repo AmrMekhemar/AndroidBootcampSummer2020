@@ -23,7 +23,7 @@ class ArticlesReceiverWorker(
         Log.d(TAG, "results : $result")
         if (result != null) {
             withContext(Dispatchers.Main) {
-                context.toast(App.getAppContext().getString(R.string.Syncing_data))
+                context.toast(context.getString(R.string.Syncing_data))
             }
             App.articleRepo.saveArticlesListToDB(result)
             Log.d(TAG, "saved to db")

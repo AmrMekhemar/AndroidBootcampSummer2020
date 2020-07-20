@@ -19,7 +19,6 @@ class NetworkStatusChecker(private val connectivityManager: ConnectivityManager?
         } else {
             App.getAppContext()
                 .toast(App.getAppContext().getString(R.string.check_internet_connection))
-
         }
     }
 

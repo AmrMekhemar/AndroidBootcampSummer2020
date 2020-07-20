@@ -23,8 +23,4 @@ data class Article(
     var multimedia: List<Multimedia> = listOf(),
     var short_url: String = "",
     var isFavorite: Boolean = false
-
-
-
-
 )

@@ -17,7 +17,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 fun buildApiService() : RemoteApiService = buildRetrofit().create(RemoteApiService::class.java)
 
 fun buildRetrofit(): Retrofit {
-    val contentType = "application/json".toMediaType()
     return Retrofit.Builder()
         .client(buildClient())
         .baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()

@@ -1,17 +1,20 @@
 package com.example.nytarticles.repository
 
+import android.app.usage.NetworkStats
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
-import androidx.work.Constraints
-import androidx.work.NetworkType
-import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkManager
+import androidx.lifecycle.Observer
+import androidx.work.*
 import com.example.nytarticles.App
 import com.example.nytarticles.BuildConfig.api_key
+import com.example.nytarticles.R
 import com.example.nytarticles.database.ArticlesDAO
 import com.example.nytarticles.model.Article
 import com.example.nytarticles.networking.RemoteApiService
+import com.example.nytarticles.utils.toast
 import com.example.nytarticles.workers.ArticlesReceiverWorker
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 import java.util.concurrent.TimeUnit
@@ -52,7 +55,13 @@ class ArticleRepo(private val apiService: RemoteApiService, private val articles
                 .build()
 
         val workerManager = WorkManager.getInstance(App.getAppContext())
-        workerManager.enqueue(articlesReceiverWorker)
+        workerManager.enqueueUniquePeriodicWork(
+            "worker",
+            ExistingPeriodicWorkPolicy.KEEP,
+            articlesReceiverWorker
+        )
+
+
     }
 }
 
