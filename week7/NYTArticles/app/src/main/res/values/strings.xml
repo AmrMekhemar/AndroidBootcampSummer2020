@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">NYT Articles</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nyt_articles">NYT Articles</string>
+    <string name="favorites">Favorites</string>
+    <string name="removed_from_favorites">removed from favorites</string>
+    <string name="added_to_favorites">added to favorites</string>
+    <string name="no_favorite_articles">You have no favorite articles</string>
+    <string name="check_internet_connection">check your Internet Connection</string>
+    <string name="url">url</string>
+</resources>
