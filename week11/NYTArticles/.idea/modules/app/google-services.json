@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "795824567061",
+    "firebase_url": "https://nycarticles.firebaseio.com",
+    "project_id": "nycarticles",
+    "storage_bucket": "nycarticles.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795824567061:android:8d339c9dd8cedc94b46f1c",
+        "android_client_info": {
+          "package_name": "com.example.nytarticles"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "795824567061-umjs2i5isnabul9sp3hn7e13qm4qdfnm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nytarticles",
+            "certificate_hash": "3e4f4a154a04e481e4d6fd5d881a59b5ccb27b44"
+          }
+        },
+        {
+          "client_id": "795824567061-rmd25q7127tc0hfgl0qdtjrn02f63n9q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQZL-gLbQgL3RomJS16wMPDoUPzBo4els"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "795824567061-rmd25q7127tc0hfgl0qdtjrn02f63n9q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
