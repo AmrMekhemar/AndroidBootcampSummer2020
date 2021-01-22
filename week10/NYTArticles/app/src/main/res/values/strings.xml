@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">NYT Articles</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nyt_articles">NYT Articles</string>
+    <string name="favorites">Favorites</string>
+    <string name="removed_from_favorites">removed from favorites</string>
+    <string name="added_to_favorites">added to favorites</string>
+    <string name="no_favorite_articles">You have no favorite articles</string>
+    <string name="check_internet_connection">check your Internet Connection</string>
+    <string name="url">url</string>
+    <string name="Syncing_data">Syncing Data</string>
+    <string name="don_t_have_an_account">Don\'t have an Account?!</string>
+    <string name="create_one">Create One!</string>
+    <string name="login">Login</string>
+    <string name="shoudNotBeLessThan8">Password should not be less than 8 characters</string>
+    <string name="notMatching">Passwords is not matching</string>
+    <string name="fillAllFields">You must fill all fields</string>
+    <string name="user_info">User Info</string>
+    <string name="sign_out">Sign out</string>
+    <string name="must_fill_all_fields">You must fill out all the fields</string>
+</resources>
